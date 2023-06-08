@@ -7,6 +7,12 @@ class NewExpense extends StatefulWidget {
   State<NewExpense> createState() => _NewExpenseState();
 }
 
+var _enteredTitle = '';
+
+void _saveTitleInout(String inputValue) {
+  _enteredTitle = inputValue;
+}
+
 class _NewExpenseState extends State<NewExpense> {
   @override
   Widget build(BuildContext context) {
@@ -15,9 +21,15 @@ class _NewExpenseState extends State<NewExpense> {
       child: Column(
         children: [
           TextField(
+            onChanged: _saveTitleInout,
             maxLength: 50,
             decoration: InputDecoration(label: Text('title')),
-          )
+          ),
+          ElevatedButton(
+              onPressed: () {
+                print(_enteredTitle);
+              },
+              child: Text("save"))
         ],
       ),
     );
