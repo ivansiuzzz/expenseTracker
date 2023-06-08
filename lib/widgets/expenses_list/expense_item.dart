@@ -19,10 +19,13 @@ class ExpenseItem extends StatelessWidget {
               children: [
                 Text('\$ ${expense.amount.toString()}'),
                 SizedBox(
-                  width: 80,
+                  width: 85,
                 ),
-                Icon(Icons.date_range),
-                Text(expense.date.toString())
+                Icon(categoryIcon[expense.category]),
+                SizedBox(
+                  height: 15,
+                ),
+                Text(expense.formattedDate)
               ],
             )
           ],
