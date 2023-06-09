@@ -10,6 +10,16 @@ class NewExpense extends StatefulWidget {
 class _NewExpenseState extends State<NewExpense> {
   final _titleController = TextEditingController();
   final _amountController = TextEditingController();
+  void _presentDatePicker() {
+    final now = DateTime.now();
+    final firstDate = DateTime(now.year - 1, now.month, now.day);
+    showDatePicker(
+        context: context,
+        initialDate: now,
+        firstDate: firstDate,
+        lastDate: now);
+  }
+
   @override
   void dispose() {
     _titleController.dispose();
@@ -35,6 +45,14 @@ class _NewExpenseState extends State<NewExpense> {
               label: Text('amount'),
               prefixText: '\$ ',
             ),
+          ),
+          Row(
+            children: [
+              Text("Select Date"),
+              IconButton(
+                  onPressed: _presentDatePicker,
+                  icon: Icon(Icons.calendar_month))
+            ],
           ),
           ElevatedButton(
               onPressed: () {
