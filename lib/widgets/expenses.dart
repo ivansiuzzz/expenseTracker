@@ -23,9 +23,17 @@ class _ExpensesState extends State<Expenses> {
         date: DateTime.now(),
         category: Category.food),
   ];
+  void _addExpense(Expense expense) {
+    print(expense.amount);
+    setState(() {
+      _registeredExpenses.add(expense);
+    });
+  }
 
   void _openAddExpenseOverlay() {
-    showModalBottomSheet(context: context, builder: (ctx) => NewExpense());
+    showModalBottomSheet(
+        context: context,
+        builder: (ctx) => NewExpense(onAddExpense: _addExpense));
   }
 
   @override
