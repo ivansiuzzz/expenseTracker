@@ -1,3 +1,5 @@
+import 'package:expensetracker/widgets/commonWidget/popupAlert.dart';
+
 import 'package:expensetracker/widgets/expenses_list/expenses_list.dart';
 import 'package:expensetracker/model/Expense.dart';
 import 'package:expensetracker/widgets/new_expense.dart';
@@ -5,7 +7,6 @@ import 'package:flutter/material.dart';
 
 class Expenses extends StatefulWidget {
   const Expenses({super.key});
-
   @override
   State<Expenses> createState() => _ExpensesState();
 }
@@ -41,6 +42,8 @@ class _ExpensesState extends State<Expenses> {
     setState(() {
       _registeredExpenses.remove(expense);
     });
+    showPopupAlert(context, "deleted expense", "${expense.title} was deleted",
+        () {}, null, null);
   }
 
   @override
